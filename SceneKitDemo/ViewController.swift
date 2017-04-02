@@ -2,24 +2,34 @@
 //  ViewController.swift
 //  SceneKitDemo
 //
-//  Created by Michael Edenzon on 4/2/17.
-//  Copyright © 2017 Michael Edenzon. All rights reserved.
+//  Created by Michael Edenzon on 11/25/16.
+//  Copyright © 2016 Michael Edenzon. All rights reserved.
 //
 
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    var modelView: SCNModelView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        modelView = SCNModelView(frame: view.frame)
+        let model = SCNModel(path: "helix.dae")
+        modelView.addModel(model: model)
+        view.addSubview(modelView)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override var prefersStatusBarHidden: Bool {
+        get {
+            return true
+        }
     }
-
-
+    
+    override var shouldAutorotate: Bool {
+        get {
+            return false
+        }
+    }
 }
 
